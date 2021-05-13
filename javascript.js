@@ -5,8 +5,8 @@ let opciones = {
             "Medias muy hermosas",
             'Sin marca',
             [
-                { id: 1, color: 'Verde', image: './assets/images/socks_green.jpg', stock: 10, isOffered: true },
-                { id: 2, color: 'Azul', image: './assets/images/socks_blue.jpg', stock: 20, isOffered: false }
+                { id: 1, color: 'green', image: './assets/images/socks_green.jpg', stock: 10, isOffered: true },
+                { id: 2, color: 'blue', image: './assets/images/socks_blue.jpg', stock: 20, isOffered: false }
             ]
         ),
         cart: new Cart(),

@@ -25,20 +25,18 @@
                     <p v-else-if="product.selectedModel.stock <= 10 && product.selectedModel.stock >0">¡Últimas
                         unidades!</p>
                     <p v-else>Sin stock</p>
-                    <ul>
-                        <li v-for="model in product.models" @mouseover="changeColor(model.id)">{{ model.color }}</li>
-                    </ul>
-                    <p v-if="product.modelIsOffered()">¡{{product.brand}} {{product.name}} está en oferta!</p>
-                    <button :disabled="product.selectedModel.stock === 0" class="button"
-                        :class="{disabledButton: product.selectedModel.stock === 0}"
-                        v-on:click="increaseQuantity()">Comprar</button>
-                    <button v-if="cartHasProduct()" class="button" v-on:click="decreaseQuantity()">Eliminar</button>
+                    <div class='color-circle'  v-for="model in product.models" :style="{'background-color': model.color }" @mouseover="changeColor(model.id)"></div>
+                        <p v-if="product.modelIsOffered()">¡{{product.brand}} {{product.name}} está en oferta!</p>
+                        <button :disabled="product.selectedModel.stock === 0" class="button"
+                            :class="{disabledButton: product.selectedModel.stock === 0}"
+                            v-on:click="increaseQuantity()">Comprar</button>
+                        <button v-if="cartHasProduct()" class="button" v-on:click="decreaseQuantity()">Eliminar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="./javascript.js"></script>
+        <script src="./javascript.js"></script>
 </body>
 
 </html>
