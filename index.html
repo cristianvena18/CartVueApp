@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="cart">Carrito: {{ cart.getQuantityProductsSaved() }}</div>
+
+        <div class="product-display">
+            <div class="product-container">
+                <div class="product-image">
+                    <img :src="product.selectedModel.image" :alt="product.description">
+                </div>
+
+                <div class="product-info">
+                    <h1>{{ product.name }}</h1>
+                    <p>{{ product.description }}</p>
+                    <p v-if="product.selectedModel.stock > 10">Stock disponible</p>
+                    <p v-else-if="product.selectedModel.stock <= 10 && product.selectedModel.stock >0">¡Últimas
+                        unidades!</p>
+                    <p v-else>Sin stock</p>
+                    <ul>
+                        <li v-for="model in product.models" @mouseover="changeColor(model.id)">{{ model.color }}</li>
+                    </ul>
+                    <p v-if="product.modelIsOffered()">¡{{product.brand}} {{product.name}} está en oferta!</p>
+                    <button :disabled="product.selectedModel.stock === 0" class="button"
+                        :class="{disabledButton: product.selectedModel.stock === 0}"
+                        v-on:click="increaseQuantity()">Comprar</button>
+                    <button v-if="cartHasProduct()" class="button" v-on:click="decreaseQuantity()">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./javascript.js"></script>
+</body>
+
+</html>
